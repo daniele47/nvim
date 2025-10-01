@@ -18,6 +18,35 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
+-- list all active lsp in current buffer
+function _G.statusline_lsp_list()
+    local lsp_names = vim.iter(vim.lsp.get_clients({ bufnr = 0 }))
+        :map(function(elem) return elem.name end)
+        :join(", ")
+    return (#lsp_names == 0 and "" or " ") .. lsp_names
+end
+
+-- change statusline
+vim.opt.statusline = vim.iter({
+    " ",
+    "%t",
+    "%m%r%y",
+    "%=",
+    "%<%{v:lua._G.statusline_lsp_list()}",
+    "%=",
+    "%{&ff}",
+    "%l:%v",
+    "%P",
+    " ",
+}):join(" ")
+-- autocmd to refresh statusline when necessary
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function() vim.cmd("redrawstatus") end,
+})
+vim.api.nvim_create_autocmd("LspDetach", {
+    callback = function() vim.defer_fn(function() vim.cmd("redrawstatus") end, 500) end,
+})
+
 -- enable all lsp
 local lsps_enable = { "bashls", "clangd", "lua_ls" }
 for _, lsp_enable in ipairs(lsps_enable) do

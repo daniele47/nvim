@@ -38,7 +38,7 @@ local col = {
 }
 
 -- util function to assign colors
-local function hi(hl, fg, bg, other) 
+local function hi(hl, fg, bg, other)
     local values = other or {}
     if fg ~= nil then
         values.fg = fg.gui
@@ -51,7 +51,7 @@ local function hi(hl, fg, bg, other)
     vim.api.nvim_set_hl(0, hl, values)
 end
 local function hi_link(hl_linked, hl_base)
-    vim.api.nvim_set_hl(0, hl_linked, {link = hl_base}) 
+    vim.api.nvim_set_hl(0, hl_linked, { link = hl_base })
 end
 
 -- :h group-name
@@ -86,7 +86,7 @@ hi_link("Tag", "Special")
 hi_link("Delimiter", "Special")
 hi_link("SpecialComment", "Special")
 hi_link("Debug", "Special")
-hi("Underlined", nil, nil, {underline = true})
+hi("Underlined", nil, nil, { underline = true })
 hi_link("Ignore", "Normal")
 hi("Error", col.fg.red, nil, { bold = true })
 hi("Todo", col.bg.lblue, nil, { bold = true })
@@ -151,10 +151,10 @@ hi("QuickFixLine", col.fg.black, col.bg.lblue)
 hi("Search", col.fg.black, col.bg.yellow)
 hi_link("SnippetTabstop", "Visual")
 hi_link("SpecialKey", "Conceal")
-hi("SpellBad", col.fg.red, nil, { undercurl = true, cterm = { underline = true }})
-hi("SpellCap", col.fg.blue, nil, { undercurl = true, cterm = { underline = true }})
-hi("SpellLocal", col.fg.purple, nil, { undercurl = true, cterm = { underline = true }})
-hi("SpellRare", col.fg.lblue, nil, { undercurl = true, cterm = { underline = true }})
+hi("SpellBad", col.fg.red, nil, { undercurl = true, cterm = { underline = true } })
+hi("SpellCap", col.fg.blue, nil, { undercurl = true, cterm = { underline = true } })
+hi("SpellLocal", col.fg.purple, nil, { undercurl = true, cterm = { underline = true } })
+hi("SpellRare", col.fg.lblue, nil, { undercurl = true, cterm = { underline = true } })
 hi("StatusLine", nil, col.bg.diff_lblue)
 hi_link("StatusLineNC", "Statusline")
 hi_link("StatusLineTerm", "Statusline")
@@ -177,11 +177,8 @@ hi("DiagnosticWarn", col.fg.orange)
 hi("DiagnosticInfo", col.fg.blue)
 hi("DiagnosticHint", col.fg.lblue)
 hi("DiagnosticOk", col.fg.green)
-hi("DiagnosticUnderlineError", nil, nil, { sp = col.fg.red.gui , undercurl = true, cterm = { underline = true}})
-hi("DiagnosticUnderlineWarn", nil, nil, { sp = col.fg.orange.gui , undercurl = true, cterm = { underline = true}})
-hi("DiagnosticUnderlineInfo", nil, nil, { sp = col.fg.blue.gui , undercurl = true, cterm = { underline = true}})
-hi("DiagnosticUnderlineHint", nil, nil, { sp = col.fg.lblue.gui , undercurl = true, cterm = { underline = true}})
-hi("DiagnosticUnderlineOk", nil, nil, { sp = col.fg.green.gui , undercurl = true, cterm = { underline = true}})
-
--- extra fixes
-hi_link("@variable", "Identifier")
+hi("DiagnosticUnderlineError", nil, nil, { sp = col.fg.red.gui, undercurl = true, cterm = { underline = true } })
+hi("DiagnosticUnderlineWarn", nil, nil, { sp = col.fg.orange.gui, undercurl = true, cterm = { underline = true } })
+hi("DiagnosticUnderlineInfo", nil, nil, { sp = col.fg.blue.gui, undercurl = true, cterm = { underline = true } })
+hi("DiagnosticUnderlineHint", nil, nil, { sp = col.fg.lblue.gui, undercurl = true, cterm = { underline = true } })
+hi("DiagnosticUnderlineOk", nil, nil, { sp = col.fg.green.gui, undercurl = true, cterm = { underline = true } })
