@@ -86,15 +86,14 @@ return {
             telemetry = { enable = false },
             workspace = {
                 checkThirdParty = false,
-            }
+            },
         }
     },
     on_init = function(client)
         if client.workspace_folders then
             local path = client.workspace_folders[1].name
             if vim.uv.fs_realpath(path) == vim.fn.stdpath('config') then
-                client.config.settings = client.config.settings or {}
-                client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua or {}, {
+                client.config.settings.Lua = {
                     runtime = {
                         version = 'LuaJIT',
                         path = {
@@ -110,7 +109,7 @@ return {
                             '${3rd}/busted/library',
                         }
                     },
-                })
+                }
             end
         end
     end,
