@@ -8,6 +8,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- style changes
 vim.diagnostic.config({
+    virtual_text = true,
+    sorted = true,
     float = { border = "single" },
 })
 -- configure lsp floating windows
