@@ -28,6 +28,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.lsp.completion.enable(true, ev.data.client_id, ev.buf, { autotrigger = false })
     end,
 })
+vim.keymap.set({"i", "s"}, "<C-l>", function()
+    if vim.snippet.active() and vim.fn.pumvisible() == 0 then
+        return vim.snippet.jump(1)
+    end
+end)
+vim.keymap.set({"i", "s"}, "<C-h>", function()
+    if vim.snippet.active() and vim.fn.pumvisible() == 0 then
+        return vim.snippet.jump(-1)
+    end
+end)
 
 -- list all active lsp in current buffer
 function _G.statusline_lsp_list()
