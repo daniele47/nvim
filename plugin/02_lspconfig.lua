@@ -1,3 +1,6 @@
+-- format keymap
+vim.keymap.set('n', 'grf', vim.lsp.buf.format)
+
 -- gd keymap
 vim.api.nvim_create_autocmd("LspAttach", {
     desc = "Create keymaps for buffers with lsp attached",
