@@ -15,11 +15,11 @@ vim.diagnostic.config({
 -- configure lsp floating windows
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-	opts = opts or {}
-	opts.border = opts.border or "single"
-	opts.max_width = opts.max_width or 100
-	opts.max_height = opts.max_height or 15
-	return orig_util_open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or "single"
+    opts.max_width = opts.max_width or 100
+    opts.max_height = opts.max_height or 15
+    return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
 -- enable snippets
@@ -28,12 +28,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.lsp.completion.enable(true, ev.data.client_id, ev.buf, { autotrigger = false })
     end,
 })
-vim.keymap.set({"i", "s"}, "<C-l>", function()
+vim.keymap.set({ "i", "s" }, "<C-l>", function()
     if vim.snippet.active() and vim.fn.pumvisible() == 0 then
         return vim.snippet.jump(1)
     end
 end)
-vim.keymap.set({"i", "s"}, "<C-h>", function()
+vim.keymap.set({ "i", "s" }, "<C-h>", function()
     if vim.snippet.active() and vim.fn.pumvisible() == 0 then
         return vim.snippet.jump(-1)
     end
@@ -69,7 +69,9 @@ vim.api.nvim_create_autocmd("LspDetach", {
 })
 
 -- enable all lsp
-local lsps_enable = { "bashls", "clangd", "lua_ls" }
+local lsps_enable = {
+    "bashls", "clangd", "lua_ls", "pylsp", "cssls", "html", "ts_ls"
+}
 for _, lsp_enable in ipairs(lsps_enable) do
     vim.lsp.enable(lsp_enable)
 end
