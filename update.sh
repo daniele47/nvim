@@ -17,7 +17,7 @@ SCRIPT_DIR="$(dirname "$SCRIPT_PATH")"
 TMPDIR="$(mktemp -d)"
 
 echo 'downloading lspconfig git repo...'
-git clone https://github.com/neovim/nvim-lspconfig/ "$TMPDIR" &>/dev/null
+git clone --depth=1 https://github.com/neovim/nvim-lspconfig/ "$TMPDIR" &>/dev/null
 rm -rf "$SCRIPT_DIR/lsp"
 mkdir -p "$SCRIPT_DIR/lsp"
 for LSP in "${LSPS[@]}"; do
