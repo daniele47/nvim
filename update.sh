@@ -29,21 +29,8 @@ done
 rm -rf "$TMPDIR"
 
 echo 'updating lspenable file...'
-echo '-- enable all lsp
-local lsps_enable = {' > "$LSP_ENABLE_FILE"
-FIRST=true
+rm "$LSP_ENABLE_FILE"
 for LSP in "${LSPS[@]}"; do
-    if [[ "$FIRST" == true ]]; then
-        echo -n "    " >> "$LSP_ENABLE_FILE"
-        FIRST=false 
-    else
-        echo -n " " >> "$LSP_ENABLE_FILE"
-    fi
-    echo -n "\"$LSP\"," >> "$LSP_ENABLE_FILE"
+    echo "vim.lsp.enable(\"$LSP\")" >> "$LSP_ENABLE_FILE"
 done
-echo '
-}
-for _, lsp_enable in ipairs(lsps_enable) do
-    vim.lsp.enable(lsp_enable)
-end' >> "$SCRIPT_DIR/plugin/02_lspenable.lua"
 

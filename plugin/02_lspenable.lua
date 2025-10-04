@@ -1,7 +1,7 @@
--- enable all lsp
-local lsps_enable = {
-    "bashls", "clangd", "cssls", "html", "lua_ls", "pylsp", "ts_ls",
-}
-for _, lsp_enable in ipairs(lsps_enable) do
-    vim.lsp.enable(lsp_enable)
-end
+vim.lsp.enable("bashls")
+vim.lsp.enable("clangd")
+vim.lsp.enable("cssls")
+vim.lsp.enable("html")
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("pylsp")
+vim.lsp.enable("ts_ls")
