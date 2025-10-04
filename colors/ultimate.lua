@@ -25,12 +25,12 @@ local col = {
         black = { gui = "#1c1c1c", tui = 234 },
     },
     bg = {
+        white = { gui = "#dadada", tui = 253 },
         yellow = { gui = "#d7af5f", tui = 179 },
         pink = { gui = "#ff87ff", tui = 213 },
         red = { gui = "#ff5f5f", tui = 203 },
         green = { gui = "#00af5f", tui = 35 },
         lblue = { gui = "#87afff", tui = 111 },
-        -- following ones have different colors in 24bit vs 256 palette
         diff_grey = { gui = "#4c4f69", tui = 239 },
         diff_lblue = { gui = "#252842", tui = 235 },
         diff_blue = { gui = "#161821", tui = 233 },
@@ -108,9 +108,14 @@ hi("DiffAdd", col.fg.black, col.bg.green)
 hi("DiffChange", col.fg.black, col.bg.lblue)
 hi("DiffDelete", col.fg.black, col.bg.red)
 hi("DiffText", col.fg.black, col.bg.pink)
+hi_link("DiffTextAdd", "DiffText")
 hi_link("EndOfBuffer", "Conceal")
 hi_link("TermCursor", "Cursor")
+hi("OkMsg", col.fg.lgreen)
+hi("WarningMsg", col.fg.orange)
 hi_link("ErrorMsg", "Error")
+hi_link("StderrMsg", "Error")
+hi_link("StdoutMsg", "Normal")
 hi_link("WinSeparator", "Conceal")
 hi_link("Folded", "Conceal")
 hi_link("FoldColumn", "Conceal")
@@ -146,10 +151,14 @@ hi_link("PmenuThumb", "PmenuSel")
 hi("PmenuMatch", col.fg.white, nil, { bold = true })
 hi("PmenuMatchSel", col.fg.white, nil, { bold = true })
 hi("ComplMatchIns")
+hi_link("PreInsert", "Added")
+hi_link("ComplHint", "Conceal")
+hi_link("ComplHintMore", "Normal")
 hi_link("Question", "Normal")
 hi("QuickFixLine", col.fg.black, col.bg.lblue)
 hi("Search", col.fg.black, col.bg.yellow)
 hi_link("SnippetTabstop", "Visual")
+hi_link("SnippetTabstopActive", "Visual")
 hi_link("SpecialKey", "Conceal")
 hi("SpellBad", col.fg.red, nil, { undercurl = true, cterm = { underline = true } })
 hi("SpellCap", col.fg.blue, nil, { undercurl = true, cterm = { underline = true } })
@@ -165,7 +174,6 @@ hi_link("TabLineSel", "Normal")
 hi_link("Title", "Normal")
 hi("Visual", nil, col.bg.diff_grey)
 hi_link("VisualNOS", "Visual")
-hi("WarningMsg", col.fg.orange)
 hi_link("Whitespace", "Conceal")
 hi_link("WildMenu", "PmenuSel")
 hi_link("WinBar", "Statusline")
