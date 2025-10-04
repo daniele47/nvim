@@ -70,11 +70,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.api.nvim_create_autocmd("LspDetach", {
     callback = function() vim.defer_fn(function() vim.cmd("redrawstatus") end, 500) end,
 })
-
--- enable all lsp
-local lsps_enable = {
-    "bashls", "clangd", "lua_ls", "pylsp", "cssls", "html", "ts_ls"
-}
-for _, lsp_enable in ipairs(lsps_enable) do
-    vim.lsp.enable(lsp_enable)
-end
