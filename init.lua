@@ -26,7 +26,7 @@ vim.opt.pumwidth = 20
 
 -- colorscheme
 vim.opt.termguicolors = true
-vim.cmd.colorscheme("ultimate")
+vim.cmd("colorscheme ultimate")
 
 -- various
 vim.opt.mousemodel = "extend"
