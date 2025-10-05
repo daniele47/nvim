@@ -2,7 +2,7 @@ vim.opt.background = "dark"
 vim.g.colors_name = "ultimate"
 
 -- clear highlighting
-vim.cmd.highlight("clear")
+vim.cmd("highlight clear")
 if vim.fn.exists('syntax_on') then
     vim.cmd('syntax reset')
 end
